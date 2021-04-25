@@ -24,7 +24,7 @@ class StudentRepository implements StudentInterface
 
     public function update(array $data, $student)
     {
-        return 'update';
+        return $student->update($data);
     }
 
     public function delete($student)

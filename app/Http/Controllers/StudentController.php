@@ -38,22 +38,17 @@ class StudentController extends Controller
     }
 
 
-    public function show($id)
-    {
-        return view('student.show');
-    }
-
-
     public function edit(Student $student)
     {
-        $student = Student::find($student);
         return view('student.edit', compact('student'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request,Student $student)
     {
-        //
+        $this->student->update($request->all(), $student);
+        session()->flash('message', 'Student Updated...');
+        return redirect()->route('student.index');
     }
 
 

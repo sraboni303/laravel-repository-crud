@@ -35,13 +35,12 @@
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->email }}</td>
                         <td>
-                            <a class="btn btn-info" href="#">Profile</a>
                             <a class="btn btn-warning" href="{{ route('student.edit', $student->id) }}">Edit</a>
 
                             <form action="{{ route('student.destroy', $student->id) }}" class="d-inline-block" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button onclick="return confirm('Are You Sure?')" type="submit" class="btn btn-danger">Delete</button>
                             </form>
 
                         </td>
