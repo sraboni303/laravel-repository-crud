@@ -2,8 +2,6 @@
 
 namespace App\Repositories\Student;
 
-use Illuminate\Support\Arr;
-
 interface StudentInterface
 {
     public function store(array $data);

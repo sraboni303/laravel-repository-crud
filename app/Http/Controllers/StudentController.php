@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use App\Http\Requests\StudentRequest;
 use App\Repositories\Student\StudentInterface;
-use PHPUnit\Framework\MockObject\Builder\Stub;
 
 class StudentController extends Controller
 {
@@ -30,9 +29,9 @@ class StudentController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
-        $this->student->store($request->all());
+        $this->student->store($request->validated());
         session()->flash('message', 'Student Created');
         return back();
     }
@@ -44,9 +43,9 @@ class StudentController extends Controller
     }
 
 
-    public function update(Request $request,Student $student)
+    public function update(StudentRequest $request,Student $student)
     {
-        $this->student->update($request->all(), $student);
+        $this->student->update($request->validated(), $student);
         session()->flash('message', 'Student Updated...');
         return redirect()->route('student.index');
     }
